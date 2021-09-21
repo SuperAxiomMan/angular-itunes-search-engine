@@ -1,0 +1,11 @@
+<div *ngIf="!songs">Please type a filter</div>
+
+<h4>Results</h4>
+
+<div>
+  <ul>
+    <li *ngFor="let song of songs?.results">
+      <a [routerLink]="['/details/{{song.trackId}}']">{{ song.artistName }}</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+<div id="search-component">
+  <label for="search-box">song Search</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+</div>
+
+<!-- {{ songList$ | async | json }} -->
+
+<div>
+  <app-results-list [songs]="songList$ | async"></app-results-list>
+</div>
