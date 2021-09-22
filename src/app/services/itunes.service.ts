@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { ResultModel } from '../models/result-model';
+import { LookupModel, ResultModel } from '../models/result-model';
+import { SongDetailComponent } from '../search-engine/song-detail/song-detail.component';
 
 
 @Injectable({
@@ -19,7 +20,8 @@ export class ItunesService {
   }
 
   getsongDetails(id: number) {
-    let url = `https://itunes.apple.com/lookup?id=${id}`;
+    let url = `https://itunes.apple.com/us/lookup?id=${id}&callback=JSONP_CALLBACK`;
+    return this.http.jsonp<LookupModel>(url, 'cb');
   }
 
   /**

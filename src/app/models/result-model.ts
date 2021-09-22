@@ -8,3 +8,15 @@ export interface ResultDetail {
   trackName: string;
   trackId: number;
 }
+
+export interface LookupModel {
+  resultCount: number;
+  results: SongLookup[];
+}
+
+export interface SongLookup {
+  artistName: string;
+  trackName: string;
+  trackId: number;
+  previewUrl?: string |null;
+}

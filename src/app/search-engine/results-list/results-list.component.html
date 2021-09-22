@@ -5,7 +5,9 @@
 <div>
   <ul>
     <li *ngFor="let song of songs?.results">
-      <a [routerLink]="['/details/{{song.trackId}}']">{{ song.artistName }}</a>
+      <a routerLink="/lookup/{{ song.trackId }}"
+        >{{ song.artistName }} - {{ song.trackName }}</a
+      >
     </li>
   </ul>
 </div>
