@@ -23,7 +23,7 @@ a {
 
 app-song-detail,
 app-root {
-  padding: 50px;
+  padding: 10px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -56,9 +56,7 @@ app-root {
   app-song-detail,
   .search-box {
     width: 100%;
-  }
-  app-root {
-    display: flex;
+    padding: 1vh;
   }
 }
 
@@ -67,9 +65,11 @@ app-root {
   app-song-detail,
   .search-box {
     width: 50%;
+    padding: 1vh;
   }
   app-root {
     display: flex;
+    padding: 0 20vh 0 20vh;
   }
 }
 
@@ -78,8 +78,10 @@ app-root {
   app-song-detail,
   .search-box {
     width: 50%;
+    padding: 1vh;
   }
   app-root {
     display: flex;
+    padding: 0 20vh 0 20vh;
   }
 }
