@@ -1,6 +1,16 @@
-<p>song-detail works!</p>
+<div class="details-box">
+  <!-- {{ song | json }} -->
 
-<!-- {{ song | json }} -->
+  <div *ngIf="!song?.previewUrl"><p>Preview Not Available</p></div>
 
-<h1>{{ song?.artistName }}</h1>
-<p>{{ song?.previewUrl }}</p>
+  <div class="audio-preview" *ngIf="song?.previewUrl">
+    <audio
+      preload="auto"
+      controls
+      class="iru-tiny-player"
+      data-title="{{ song?.artistName }} - {{ song?.trackName }}"
+    >
+      <source src="{{ song?.previewUrl }}" />
+    </audio>
+  </div>
+</div>

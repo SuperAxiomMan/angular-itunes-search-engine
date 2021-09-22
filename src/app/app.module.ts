@@ -7,6 +7,9 @@ import { SearchEngineComponent } from './search-engine/search-engine.component';
 import { ResultsListComponent } from './search-engine/results-list/results-list.component';
 import { SongDetailComponent } from './search-engine/song-detail/song-detail.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './modules/material.module';
+import { ItunesService } from './services/itunes.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,11 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [ItunesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
