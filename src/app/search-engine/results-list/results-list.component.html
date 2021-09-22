@@ -16,7 +16,7 @@
 
   <mat-selection-list #song [multiple]="false">
     <mat-list-option *ngFor="let song of songs?.results" [value]="song">
-      <a routerLink="/lookup/{{ song.trackId }}"
+      <a *ngIf="song.trackId" routerLink="/lookup/{{ song.trackId }}"
         >{{ song.artistName }} - {{ song.trackName }}</a
       >
     </mat-list-option>

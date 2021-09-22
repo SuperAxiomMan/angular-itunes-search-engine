@@ -19,4 +19,6 @@ export interface SongLookup {
   trackName: string;
   trackId: number;
   previewUrl?: string |null;
+  artworkUrl100:string
+  collectionName?:string
 }

@@ -7,17 +7,16 @@ import { ItunesService } from '../services/itunes.service';
 @Component({
   selector: 'app-search-engine',
   templateUrl: './search-engine.component.html',
-  styleUrls: ['./search-engine.component.css']
+  styleUrls: ['./search-engine.component.css'],
 })
 export class SearchEngineComponent implements OnInit {
-
   songList$!: Observable<ResultModel>;
   private searchTerms = new Subject<string>();
 
-  constructor(private itunes:ItunesService) { }
+  constructor(private itunes: ItunesService) {}
 
   search(term: string): void {
-    console.log('searchin')
+    console.log('searchin');
     this.searchTerms.next(term);
   }
 
@@ -30,8 +29,7 @@ export class SearchEngineComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.itunes.getResults(term)),
+      switchMap((term: string) => this.itunes.getResults(term))
     );
   }
-
 }

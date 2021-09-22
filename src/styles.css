@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
+mat-form-field * {
+  color: white;
+}
 html,
 body {
   height: 100%;
@@ -18,15 +21,65 @@ a {
   color: white;
 }
 
+app-song-detail,
 app-root {
-  display: flex;
   padding: 50px;
-}
-.search-box {
-  width: 50%;
 }
 
-app-song-detail {
-  width: 50%;
-  padding: 50px;
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 30px;
+  }
+  app-song-detail,
+  .search-box {
+    width: 100%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    padding: 30px;
+  }
+  app-song-detail,
+  .search-box {
+    width: 100%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    padding: 30px;
+  }
+  app-song-detail,
+  .search-box {
+    width: 100%;
+  }
+  app-root {
+    display: flex;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  app-song-detail,
+  .search-box {
+    width: 50%;
+  }
+  app-root {
+    display: flex;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  app-song-detail,
+  .search-box {
+    width: 50%;
+  }
+  app-root {
+    display: flex;
+  }
 }

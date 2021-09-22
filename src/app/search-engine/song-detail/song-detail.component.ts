@@ -10,8 +10,9 @@ import { ItunesService } from 'src/app/services/itunes.service';
   styleUrls: ['./song-detail.component.css'],
 })
 export class SongDetailComponent implements OnInit {
-  songDetail$?: Observable<SongLookup>;
   song?: SongLookup | undefined;
+  audioPreview: any;
+  playEnabled?: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,9 +26,28 @@ export class SongDetailComponent implements OnInit {
   }
 
   getsongDetails(id: string): void {
-    console.log(id)
-    this.itunes.getsongDetails(parseInt(id)).subscribe((songData:LookupModel) => {
-      this.song=songData.results[0]
-    });
+    console.log(id);
+    this.itunes
+      .getsongDetails(parseInt(id))
+      .subscribe((songData: LookupModel) => {
+        this.song = songData.results[0];
+
+        this.song.artworkUrl100 = this.song.artworkUrl100.replace(
+          '100x100bb',
+          '500x500bb'
+        );
+      });
+  }
+
+  play() {
+    this.playEnabled = true;
+    this.audioPreview = new Audio(this.song?.previewUrl!);
+    this.audioPreview.play();
+  }
+
+  stop() {
+    this.playEnabled = false;
+    this.audioPreview.pause();
+    this.audioPreview.currentTime = 0;
   }
 }
