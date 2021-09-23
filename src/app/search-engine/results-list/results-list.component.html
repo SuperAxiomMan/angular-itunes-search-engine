@@ -1,24 +1,22 @@
 <div class="results-box">
   <div *ngIf="!songs">Please type a filter</div>
 
-  <h1 *ngIf="songs">Results</h1>
-
-  <!-- <div>
-    <ul>
-      <li *ngFor="let song of songs?.results">
-        <a routerLink="/lookup/{{ song.trackId }}"
-          >{{ song.artistName }} - {{ song.trackName }}</a
-        >
-      </li>
-    </ul>
-  </div>
-</div> -->
-
-  <mat-selection-list #song [multiple]="false">
+  <mat-selection-list #song [multiple]="false" *ngIf="songs">
+    <div mat-subheader>Results</div>
     <mat-list-option *ngFor="let song of songs?.results" [value]="song">
-      <a *ngIf="song.trackId" routerLink="/lookup/{{ song.trackId }}"
-        >{{ song.artistName }} - {{ song.trackName }}</a
+      <a
+        mat-list-item
+        *ngIf="song.trackId"
+        routerLink="/lookup/{{ song.trackId }}"
       >
+        <mat-list-item>
+          <img src="{{ song.artworkUrl60 }}" alt=" {{ song.trackName }}" />
+          <div mat-line>{{ song.artistName }}</div>
+          <div mat-line>
+            <i>{{ song.trackName }}</i>
+          </div>
+        </mat-list-item>
+      </a>
     </mat-list-option>
   </mat-selection-list>
 </div>

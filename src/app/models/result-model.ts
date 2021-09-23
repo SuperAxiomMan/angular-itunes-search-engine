@@ -7,6 +7,8 @@ export interface ResultDetail {
   artistName: string;
   trackName: string;
   trackId: number;
+  artworkUrl60:string
+
 }
 
 export interface LookupModel {

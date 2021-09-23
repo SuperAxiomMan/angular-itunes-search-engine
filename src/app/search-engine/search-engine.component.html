@@ -1,23 +1,39 @@
-<!-- <div id="search-component">
-  <label for="search-box">song Search</label>
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-</div> -->
+<!-- <div class="main">
+  <form class="song-form" (keydown.enter)="$event.preventDefault()">
+    <mat-form-field class="song-full-width" appearance="fill">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        placeholder="Ex. Dream Theater"
+        #searchBox
+        id="search-box"
+        (input)="search(searchBox.value)"
+      />
+    </mat-form-field>
+  </form> -->
 
-<form class="example-form" (keydown.enter)="$event.preventDefault()">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Search</mat-label>
-    <input
-      matInput
-      placeholder="Ex. Dream Theater"
-      #searchBox
-      id="search-box"
-      (input)="search(searchBox.value)"
-    />
-  </mat-form-field>
-</form>
+<div class="main">
+  <form class="song-form" (keydown.enter)="$event.preventDefault()">
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          #searchBox
+          id="search-box"
+          (input)="search(searchBox.value)"
+          matInput
+          placeholder="Artist or Track"
+        />
+        <mat-icon matSuffix>audiotrack</mat-icon>
+        <mat-hint>Ex. Dream Theater</mat-hint>
+      </mat-form-field>
+    </p>
+  </form>
 
-<!-- {{ songList$ | async | json }} -->
+  <!-- {{ songList$ | async | json }} -->
 
-<div>
-  <app-results-list [songs]="songList$ | async"></app-results-list>
+  <div>
+    <app-results-list [songs]="songList$ | async"></app-results-list>
+  </div>
 </div>

@@ -1,24 +1,7 @@
-<!-- <div class="details-box">
-  {{ song | json }}
-
-  <div *ngIf="!song?.previewUrl"><p>Preview Not Available</p></div>
-
-  <div class="audio-preview" *ngIf="song?.previewUrl">
-    <audio
-      preload="auto"
-      controls
-      class="iru-tiny-player"
-      data-title="{{ song?.artistName }} - {{ song?.trackName }}"
-    >
-      <source src="{{ song?.previewUrl }}" />
-    </audio>
-  </div>
-</div> -->
-
 <div class="details-box">
-  <mat-card class="example-card">
+  <mat-card class="song-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+      <div mat-card-avatar class="song-header-image"></div>
       <mat-card-title>{{ song?.trackName }}</mat-card-title>
       <mat-card-subtitle>{{ song?.artistName }}</mat-card-subtitle>
     </mat-card-header>
@@ -27,6 +10,16 @@
       src="{{ song?.artworkUrl100 }}"
       alt="{{ song?.collectionName }}"
     />
+
+    <ng-template #noPreview>
+      <mat-card-content>
+        <mat-card-content></mat-card-content>
+        <mat-toolbar>
+          <mat-icon mat-fab color="warn" aria-label="warn icon">error</mat-icon>
+          <span>Audio Preview Not Available</span>
+        </mat-toolbar>
+      </mat-card-content>
+    </ng-template>
 
     <mat-card-actions *ngIf="song?.previewUrl; else noPreview">
       <button
@@ -48,11 +41,5 @@
         <mat-icon>stop_circle</mat-icon>
       </button>
     </mat-card-actions>
-    <ng-template #noPreview>
-      <mat-toolbar>
-        <mat-icon mat-fab color="warn" aria-label="warn icon">error</mat-icon>
-        <span>Audio Preview Not Available</span>
-      </mat-toolbar>
-    </ng-template>
   </mat-card>
 </div>

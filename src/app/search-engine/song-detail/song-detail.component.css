@@ -1,3 +1,26 @@
+.details-box {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
+  width: 75%;
+}
+.mat-card-avatar {
+  display: none;
+}
+
 mat-card-actions button {
   margin: 5px;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .details-box {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin: auto;
+    width: 50%;
+  }
 }

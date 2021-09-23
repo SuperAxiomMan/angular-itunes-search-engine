@@ -1,7 +1,12 @@
+<mat-toolbar>
+  <a mat-button [routerLink]="'/'">
+    <img src="{{ appLogo }}" width="75px" alt="" />
+  </a>
+  <span class="spacer"></span>
+  <span>Itunes Search Engine</span>
+</mat-toolbar>
+
 <div class="search-box">
-  <mat-toolbar>
-    <span>Itunes Search Engine</span>
-  </mat-toolbar>
   <app-search-engine></app-search-engine>
 </div>
 
