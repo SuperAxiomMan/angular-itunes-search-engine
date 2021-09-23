@@ -12,11 +12,13 @@ import { ItunesService } from '../services/itunes.service';
 export class SearchEngineComponent implements OnInit {
   songList$!: Observable<ResultModel>;
   private searchTerms = new Subject<string>();
+  searchin: boolean=false;
 
   constructor(private itunes: ItunesService) {}
 
   search(term: string): void {
-    console.log('searchin');
+    this.searchin = true;
+    console.log('searchin', this.searchin);
     this.searchTerms.next(term);
   }
 
@@ -29,7 +31,12 @@ export class SearchEngineComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.itunes.getResults(term))
+      switchMap((term: string) => {
+        this.searchin = false;
+        console.log('searchin', this.searchin);
+
+        return this.itunes.getResults(term);
+      })
     );
   }
 }

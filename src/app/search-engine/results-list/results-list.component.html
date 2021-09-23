@@ -1,7 +1,17 @@
 <div class="results-box">
-  <div *ngIf="!songs">Please type a filter</div>
+  <div *ngIf="songs?.results?.length === null || songs?.results?.length === 0">
+    Please type a filter
+  </div>
 
-  <mat-selection-list #song [multiple]="false" *ngIf="songs">
+  <div class="loader" *ngIf="searchin">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-selection-list
+    #song
+    [multiple]="false"
+    *ngIf="songs?.results && !searchin && songs?.results?.length != 0"
+  >
     <div mat-subheader>Results</div>
     <mat-list-option *ngFor="let song of songs?.results" [value]="song">
       <a
