@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Event } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
+
 import { LookupModel, SongLookup } from 'src/app/models/result-model';
 import { ItunesService } from 'src/app/services/itunes.service';
 
@@ -12,7 +12,7 @@ import { ItunesService } from 'src/app/services/itunes.service';
 })
 export class SongDetailComponent implements OnInit {
   subscription?: Subscription;
-  song?: SongLookup | undefined;
+  song?: SongLookup;
   audioPreview: any;
   playEnabled?: boolean;
 
@@ -23,6 +23,7 @@ export class SongDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription = this.activatedRoute.url.subscribe((url) => {
+      this.song = <SongLookup>{};
       this.getsongDetails(url[1].path);
     });
   }

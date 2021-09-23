@@ -1,5 +1,8 @@
 <div class="details-box">
-  <mat-card class="song-card">
+  <div class="loader" *ngIf="!song?.trackId">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-card class="song-card" *ngIf="song?.trackId">
     <mat-card-header>
       <div mat-card-avatar class="song-header-image"></div>
       <mat-card-title>{{ song?.trackName }}</mat-card-title>
