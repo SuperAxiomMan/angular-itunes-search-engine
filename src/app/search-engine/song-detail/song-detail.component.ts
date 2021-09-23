@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { LookupModel, SongLookup } from 'src/app/models/result-model';
 import { ItunesService } from 'src/app/services/itunes.service';
@@ -10,6 +11,7 @@ import { ItunesService } from 'src/app/services/itunes.service';
   styleUrls: ['./song-detail.component.css'],
 })
 export class SongDetailComponent implements OnInit {
+  subscription?: Subscription;
   song?: SongLookup | undefined;
   audioPreview: any;
   playEnabled?: boolean;
@@ -20,12 +22,15 @@ export class SongDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.url.subscribe((url) => {
+    this.subscription = this.activatedRoute.url.subscribe((url) => {
       this.getsongDetails(url[1].path);
     });
   }
 
   getsongDetails(id: string): void {
+    if (this.audioPreview) {
+      this.stop();
+    }
     console.log(id);
     this.itunes
       .getsongDetails(parseInt(id))
@@ -49,5 +54,9 @@ export class SongDetailComponent implements OnInit {
     this.playEnabled = false;
     this.audioPreview.pause();
     this.audioPreview.currentTime = 0;
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 }
