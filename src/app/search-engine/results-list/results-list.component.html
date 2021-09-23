@@ -13,12 +13,12 @@
     *ngIf="songs?.results && !searchin && songs?.results?.length != 0"
   >
     <div mat-subheader>Results</div>
-    <mat-list-option *ngFor="let song of songs?.results" [value]="song">
-      <a
-        mat-list-item
-        *ngIf="song.trackId"
-        routerLink="/lookup/{{ song.trackId }}"
-      >
+    <mat-list-option
+      *ngFor="let song of songs?.results"
+      [value]="song"
+      [ngClass]="{ 'no-id-track': !song.trackId }"
+    >
+      <a mat-list-item routerLink="/lookup/{{ song.trackId }}">
         <mat-list-item>
           <img src="{{ song.artworkUrl60 }}" alt=" {{ song.trackName }}" />
           <div mat-line>{{ song.artistName }}</div>
